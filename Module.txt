@@ -1,0 +1,24 @@
+﻿Name: Slides
+AntiForgery: enabled
+Author: IDeliverable, Ltd.
+Website: https://github.com/IDeliverable/IDeliverable.Slides
+Version: 1.1.0
+OrchardVersion: 1.10
+Status: Delivered
+Description: Provides features that allows editors to easily add slideshows to their websites.
+Features:
+    IDeliverable.Slides:
+        Name: Slides
+        Description: Enables features that allows editors to easily add slideshows to their websites.
+        Category: Content
+        Dependencies: Orchard.Layouts, Orchard.Resources, Orchard.MediaLibrary
+    IDeliverable.Slides.Projections:
+        Name: Projection Slides
+        Description: Enables a provider that creates slides from projections.
+        Category: Content
+        Dependencies: IDeliverable.Slides, Orchard.Projections, Orchard.Forms
+    IDeliverable.Slides.Lists:
+        Name: List Slides
+        Description: Enables a provider that creates slides from lists.
+        Category: Content
+        Dependencies: IDeliverable.Slides, Orchard.Lists

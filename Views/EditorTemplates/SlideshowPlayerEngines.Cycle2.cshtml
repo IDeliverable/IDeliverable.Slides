@@ -1,0 +1,158 @@
+﻿@using Orchard.Utility.Extensions
+@using IDeliverable.Slides.Helpers
+@model IDeliverable.Slides.SlideshowPlayerEngines.Cycle2.Cycle2
+@functions{
+    IEnumerable<SelectListItem> GetFxOptions(string selectedValue)
+    {
+        var fxItems = new[] { "None", "Fade", "Fadeout", "ScrollHorz", "FlipHorz", "FlipVert", "Carousel", "TileSlide", "TileBlind", "Shuffle" };
+        return fxItems.Select(x => new SelectListItem { Text = x.CamelFriendly(), Value = x.ToPascalCase(), Selected = x == selectedValue });
+    }
+}
+<fieldset>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Fx, T("FX"))
+        @Html.DropDownListFor(m => m.Fx, GetFxOptions(Model.Fx))
+        @Html.Hint(T("The name of the slideshow transition to use."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ManualFx, T("Manual FX"))
+        @Html.DropDownListFor(m => m.ManualFx, GetFxOptions(Model.ManualFx))
+        @Html.Hint(T("The transition effect to use for manually triggered transitions (not timer-based transitions)."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Easing, T("Easing"))
+        @Html.TextBoxFor(m => m.Easing, new { @class = "text medium" })
+        @Html.Hint(T("The name of the <a target=\"_blank\" href=\"http://jqueryui.com/resources/demos/effect/easing.html\">easing function</a> to use for animations."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Speed, T("Speed"))
+        @Html.TextBoxFor(m => m.Speed, new {@class = "text medium"})
+        @Html.Hint(T("The speed of the transition effect in milliseconds."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ManualSpeed, T("Manual Speed"))
+        @Html.TextBoxFor(m => m.ManualSpeed, new {@class = "text medium"})
+        @Html.Hint(T("The speed (in milliseconds) for transitions that are manually initiated, such as those caused by clicking a \"next\" button or a pager link. By default, manual transitions occur at the same speed as automatic (timer-based) transitions."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Timeout, T("Timeout"))
+        @Html.TextBoxFor(m => m.Timeout, new {@class = "text medium"})
+        @Html.Hint(T("The time between slide transitions in milliseconds."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Controls)
+        @Html.LabelFor(m => m.Controls, T("Show Controls").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this option to show the next and prev control buttons."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Pagination)
+        @Html.LabelFor(m => m.Pagination, T("Show Pagination").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this option to the show pager buttons."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.AllowWrap)
+        @Html.LabelFor(m => m.AllowWrap, T("Allow Wrap").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("This option determines whether or not a slideshow can advance from the last slide to the first (or vice versa)."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Loop, T("Loop"))
+        @Html.TextBoxFor(m => m.Loop, new {@class = "text medium"})
+        @Html.Hint(T("The number of times an auto-advancing slideshow should loop before terminating. If the value is less than 1 then the slideshow will loop continuously. Set to 1 to loop once, etc. Note: Setting the allow-wrap option to false will override looping."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AutoHeight, T("Auto Height"))
+        @Html.TextBoxFor(m => m.AutoHeight, new {@class = "text medium"})
+        <div class="hint">
+            <p>This option determines whether or not Cycle2 will provide height management for the slideshow which can be very useful in fluid or responsive designs. There are three ways this option can be used:</p>
+            <ul>
+                <li>an integer can be provided to identify the zero-based slide index for a sentinel slide</li>
+                <li>the string "calc" can be provided to instruct Cycle2 to calculate the tallest slide and use it as the sentinel</li>
+                <li>a ratio string can be provided which identifies the width:height aspect ratio for the container</li>
+            </ul>
+            <p>By default, the slideshow's first slide is used as the sentinel slide and its demensions will control the height of the slideshow container if the container does not have a specific height set via CSS.</p>
+            <p>To force the slideshow container to a specific aspect ratio, for example to hold a set of images that are 600x400, use a ratio string like this:</p>
+            <blockquote>data-cycle-auto-height="600:400"</blockquote>
+            <p>To disable height management, set this option's value to -1 or false.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Paused)
+        @Html.LabelFor(m => m.Paused, T("Paused").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("If checked the slideshow will begin in a paused state."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.PauseOnHover)
+        @Html.LabelFor(m => m.PauseOnHover, T("Pause On Hover").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("If checked an auto-running slideshow will be paused while the mouse is over the slideshow."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Random)
+        @Html.LabelFor(m => m.Random, T("Random").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("If checked the order of the slides will be randomized. This only effects slides that are initially in the markup, not slides added via the add command or via Cycle2's image loader functionality."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Reverse)
+        @Html.LabelFor(m => m.Reverse, T("Reverse").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("If checked the slideshow will proceed in reverse order and transitions that support this option will run a reverse animation."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.Swipe)
+        @Html.LabelFor(m => m.Swipe, T("Swipe").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this option to enable swipe gesture support for advancing the slideshow forward or back."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SwipeFx, T("Swipe FX"))
+        @Html.TextBoxFor(m => m.SwipeFx, new { @class = "text medium" })
+        @Html.Hint(T("The transition effect to use for swipe-triggered transitions. If not provided the transition declared in the Manual FX or FX attribute will be used."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.CarouselFluid)
+        @Html.LabelFor(m => m.CarouselFluid, T("Fluid Carousel Slides").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("If this value is true and Visible Carousel Slides is specified, then the slides within the carousel will be resized in order to fill the container with the number of slides specified by the Visible Carousel Slides setting."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarouselVisible, T("Visible Carousel Slides"))
+        @Html.TextBoxFor(m => m.CarouselVisible, new { @class = "text medium" })
+        @Html.Hint(T("Number of slides to be displayed in the carousel. Setting this option will cause the carousel to have a fixed width unless Fluid Carousel is checked."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.CarouselVertical)
+        @Html.LabelFor(m => m.CarouselVertical, T("Vertical Carousel Slides").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this option for a vertical carousel."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.CarouselThrottleSpeed)
+        @Html.LabelFor(m => m.CarouselThrottleSpeed, T("Throttle Carousel Speed").Text, new {@class = "forcheckbox"})
+        @Html.Hint(T("Check this option if the speed should be throttled to achieve a consistent scroll rate. This is useful only if you wish each slide to be scrolled at the exact same rate and your slides have different widths."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShuffleLeft, T("Shuffle Left"))
+        @Html.TextBoxFor(m => m.ShuffleLeft, new {@class = "text small"})
+        @Html.Hint(T("Pixel position relative to the container's left edge to move the slide when transitioning. Set to negative to move beyond the container's left edge."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShuffleRight, T("Shuffle Right"))
+        @Html.TextBoxFor(m => m.ShuffleRight, new {@class = "text small"})
+        @Html.Hint(T("Number of pixels beyond right edge of container to move the slide when transitioning."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ShuffleRight, T("Shuffle Top"))
+        @Html.TextBoxFor(m => m.ShuffleTop, new {@class = "text small"})
+        @Html.Hint(T("Number of pixels beyond top edge of container to move the slide when transitioning. Set to negative to move beyond the container's top edge."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TileCount, T("Tile Count"))
+        @Html.TextBoxFor(m => m.ShuffleTop, new {@class = "text small"})
+        @Html.Hint(T("The number of tiles to use in the transition."))
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TileDelay, T("Tile Delay"))
+        @Html.TextBoxFor(m => m.TileDelay, new {@class = "text small"})
+        @Html.Hint(T("The number of milliseconds to delay each individual tile transition."))
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.TileVertical)
+        @Html.LabelFor(m => m.TileVertical, T("Tile Vertical").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this option for a vertical transition."))
+    </div>
+</fieldset>

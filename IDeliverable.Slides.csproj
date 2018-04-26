@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5C14E1E-E2B4-4851-BB27-06B97818C4FA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IDeliverable.Slides</RootNamespace>
+    <AssemblyName>IDeliverable.Slides</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets.json" />
+    <None Include="Assets\JavaScript\admin-slideshow-part.js" />
+    <None Include="Assets\JavaScript\admin-slides-part.js" />
+    <Content Include="App_Data\Localization\en-US\orchard.module.po" />
+    <None Include="Assets\Less\admin-slideshow-part.less" />
+    <None Include="Assets\Less\admin-slides-part.less" />
+    <None Include="Assets\Less\admin-style-type-browser.less" />
+    <Content Include="packages.config" />
+    <Content Include="IDeliverable.Slides.nuspec" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Scripts\carousel.js" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Scripts\transition.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.carousel.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.flip.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.shuffle.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.swipe.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.tile.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Styles\cycle2.less" />
+    <None Include="SlideshowPlayerEngines\JCarousel\Scripts\engine-jcarousel.js" />
+    <None Include="SlideshowPlayerEngines\JCarousel\Scripts\jquery.jcarousel.js" />
+    <None Include="SlideshowPlayerEngines\JCarousel\Scripts\modernizr.transitions.js" />
+    <None Include="SlideshowPlayerEngines\Cycle2\Scripts\jquery.cycle2.js" />
+    <Content Include="Scripts\Admin.js" />
+    <Content Include="Scripts\Admin.min.js" />
+    <Content Include="Scripts\Engine.Bootstrap.js" />
+    <Content Include="Scripts\Engine.Bootstrap.min.js" />
+    <Content Include="Scripts\Engine.Cycle2.js" />
+    <Content Include="Scripts\Engine.Cycle2.min.js" />
+    <Content Include="Scripts\Engine.JCarousel.js" />
+    <Content Include="Scripts\Engine.JCarousel.min.js" />
+    <Content Include="Styles\Admin.css" />
+    <Content Include="Styles\Admin.min.css" />
+    <Content Include="Styles\Engine.Bootstrap.css" />
+    <Content Include="Styles\Engine.Bootstrap.min.css" />
+    <Content Include="Styles\Engine.Cycle2.css" />
+    <Content Include="Styles\Engine.Cycle2.min.css" />
+    <Content Include="Styles\Engine.JCarousel.css" />
+    <Content Include="Styles\Engine.JCarousel.min.css" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Module.txt" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\carousel.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\alerts.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\background-variant.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\border-radius.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\buttons.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\center-block.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\clearfix.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\forms.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\gradients.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\grid-framework.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\grid.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\hide-text.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\image.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\labels.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\list-group.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\nav-divider.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\nav-vertical-align.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\opacity.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\pagination.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\panels.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\progress-bar.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\reset-filter.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\resize.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\responsive-visibility.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\size.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\tab-focus.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\table-row.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\text-emphasis.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\text-overflow.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\mixins\vendor-prefixes.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\variables.less" />
+    <None Include="SlideshowPlayerEngines\JCarousel\Styles\engine-jcarousel.less" />
+    <None Include="SlideshowPlayerEngines\Bootstrap\Styles\glyphicons.less" />
+    <Content Include="Views\SlideFactory\MediaSlides.cshtml" />
+    <Content Include="Views\EditorTemplates\SlideshowPlayerEngines.Cycle2.cshtml" />
+    <Content Include="Views\SlideshowPlayerEngines.Cycle2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Forms\Orchard.Forms.csproj">
+      <Project>{642a49d7-8752-4177-80d6-bfbbcfad3de0}</Project>
+      <Name>Orchard.Forms</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Layouts\Orchard.Layouts.csproj">
+      <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
+      <Name>Orchard.Layouts</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.MediaLibrary\Orchard.MediaLibrary.csproj">
+      <Project>{73a7688a-5bd3-4f7e-adfa-ce36c5a10e3b}</Project>
+      <Name>Orchard.MediaLibrary</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Projections\Orchard.Projections.csproj">
+      <Project>{5531e894-d259-45a3-aa61-26dbe720c1ce}</Project>
+      <Name>Orchard.Projections</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminMenu.cs" />
+    <Compile Include="Controllers\SlideshowProfileController.cs" />
+    <Compile Include="Drivers\SlideshowElementDriver.cs" />
+    <Compile Include="Filters\DialogAttribute.cs" />
+    <Compile Include="Handlers\SlideshowSettingsPartHandler.cs" />
+    <Compile Include="Helpers\StorageExtensions.cs" />
+    <Compile Include="Helpers\SlideshowPlayerEngineDataHelper.cs" />
+    <Compile Include="Models\ISlideshow.cs" />
+    <Compile Include="Models\SlideshowProfile.cs" />
+    <Compile Include="SlideshowPlayerEngines\Cycle2\Cycle2.cs" />
+    <Compile Include="SlidesProviders\ListSlidesProvider.cs" />
+    <Compile Include="SlidesProviders\ProjectionSlidesProvider.cs" />
+    <Compile Include="Services\ContentPartStorage.cs" />
+    <Compile Include="Services\ElementStorage.cs" />
+    <Compile Include="Services\ISlideshowProfileService.cs" />
+    <Compile Include="Services\ISlidesProviderService.cs" />
+    <Compile Include="Services\ISlidesProvider.cs" />
+    <Compile Include="SlidesProviders\DefaultSlidesProvider.cs" />
+    <Compile Include="Services\IStorage.cs" />
+    <Compile Include="Services\SlideshowProfileService.cs" />
+    <Compile Include="Services\SlidesProvider.cs" />
+    <Compile Include="Services\SlidesProviderContext.cs" />
+    <Compile Include="Services\SlidesProviderExportContext.cs" />
+    <Compile Include="Services\SlidesProviderImportContext.cs" />
+    <Compile Include="Services\SlidesProviderService.cs" />
+    <Compile Include="SlideshowPlayerEngines\Bootstrap\Bootstrap.cs" />
+    <Compile Include="SlideshowPlayerEngines\JCarousel\JCarousel.cs" />
+    <Compile Include="ViewModels\ListSlidesProviderViewModel.cs" />
+    <Compile Include="ViewModels\ProjectionSlidesProviderViewModel.cs" />
+    <Compile Include="ViewModels\DefaultSlidesProviderViewModel.cs" />
+    <Compile Include="ViewModels\SlideshowProfileIndexViewModel.cs" />
+    <Compile Include="Models\SlideshowSettingsPart.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="ViewModels\LayoutEditorViewModel.cs" />
+    <Compile Include="Controllers\SlideshowElementController.cs" />
+    <Compile Include="Controllers\SlideshowPartController.cs" />
+    <Compile Include="Controllers\SlideFactoryController.cs" />
+    <Compile Include="Elements\Slideshow.cs" />
+    <Compile Include="Handlers\SlideshowElementHandler.cs" />
+    <Compile Include="Helpers\UrlStringExtensions.cs" />
+    <Compile Include="Services\SlideshowPlayerEngine.cs" />
+    <Compile Include="Services\SlideshowPlayerEngineManager.cs" />
+    <Compile Include="Services\ISlideshowPlayerEngine.cs" />
+    <Compile Include="Services\ISlideshowPlayerEngineManager.cs" />
+    <Compile Include="Services\Updater.cs" />
+    <Compile Include="ViewModels\SlideshowElementViewModel.cs" />
+    <Compile Include="ViewModels\SlideshowProfileViewModel.cs" />
+    <Compile Include="ViewModels\SlideshowSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ContentSlidesFactoryViewModel.cs" />
+    <Compile Include="ViewModels\ImageSlidesFactoryViewModel.cs" />
+    <Compile Include="ViewModels\SlideshowPartViewModel.cs" />
+    <Compile Include="Controllers\SlideController.cs" />
+    <Compile Include="Drivers\SlideshowPartDriver.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\SlideshowPart.cs" />
+    <Compile Include="Services\ISlidesSerializer.cs" />
+    <Compile Include="Handlers\SlideshowPartHandler.cs" />
+    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Services\XmlSlidesSerializer.cs" />
+    <Compile Include="ViewModels\SlideEditorViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.Slideshow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Placement.info">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideFactory\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlideEditorViewModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Slide\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Slideshow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Slideshow.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Slideshow.SummaryAdmin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideFactory\ContentSlides.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DefinitionTemplates\SlideshowSettings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlideshowPlayerEngines.JCarousel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowPlayerEngines.JCarousel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlideshowPlayerEngines.Bootstrap.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowPlayerEngines.Bootstrap.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\Slideshow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\Slideshow.Design.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Elements.Slideshow.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowElement\Browse.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowElement\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowElement\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlidesFactorySelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowProfile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowProfile\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlideshowProfileViewModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SlideshowProfile\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlidesProviders.Projection.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlidesProviders.List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlidesProviders.Slides.Part.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\SlidesProviders.Slides.Element.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\Web.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

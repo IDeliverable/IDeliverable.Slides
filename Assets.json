@@ -1,0 +1,68 @@
+﻿[
+    {
+        "inputs":
+        [
+            "Assets/Less/*.less"
+        ],
+        "output": "Styles/Admin.css"
+    },
+    {
+        "inputs":
+        [
+            "Assets/JavaScript/*.js"
+        ],
+        "output": "Scripts/Admin.js"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/Bootstrap/Styles/carousel.less",
+            "SlideshowPlayerEngines/Bootstrap/Styles/glyphicons.less"
+        ],
+        "output": "Styles/Engine.Bootstrap.css"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/Bootstrap/Scripts/transition.js",
+            "SlideshowPlayerEngines/Bootstrap/Scripts/carousel.js"
+        ],
+        "output": "Scripts/Engine.Bootstrap.js"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/JCarousel/Styles/engine-jcarousel.less"
+        ],
+        "output": "Styles/Engine.JCarousel.css"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/JCarousel/Scripts/modernizr.transitions.js",
+            "SlideshowPlayerEngines/JCarousel/Scripts/jquery.jcarousel.js",
+            "SlideshowPlayerEngines/JCarousel/Scripts/engine-jcarousel.js"
+
+        ],
+        "output": "Scripts/Engine.JCarousel.js"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/Cycle2/Styles/cycle2.less"
+        ],
+        "output": "Styles/Engine.Cycle2.css"
+    },
+    {
+        "inputs":
+        [
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.js",
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.swipe.js",
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.flip.js",
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.carousel.js",
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.shuffle.js",
+            "SlideshowPlayerEngines/Cycle2/Scripts/jquery.cycle2.tile.js"
+        ],
+        "output": "Scripts/Engine.Cycle2.js"
+    }
+]

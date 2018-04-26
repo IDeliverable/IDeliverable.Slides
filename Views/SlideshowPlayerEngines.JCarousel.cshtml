@@ -1,0 +1,52 @@
+﻿@using IDeliverable.Slides.SlideshowPlayerEngines.JCarousel
+@{
+
+    Script.Require("jQuery");
+    Style.Include("Engine.JCarousel.css", "Engine.JCarousel.min.css");
+    Script.Include("Engine.JCarousel.js", "Engine.JCarousel.min.js");
+
+    var engine = (JCarousel)Model.Engine;
+    var slides = (IList<dynamic>)Model.Slides;
+    var jCarouselClass = engine.Vertical ? "jcarousel-vertical" : "";
+
+    if (slides.Any())
+    {
+        <!-- Wrapper -->
+        <div class="jcarousel-engine"
+             data-autostart="@engine.AutoStart.ToString().ToLower()"
+             data-interval="@engine.Interval"
+             data-transitions="@engine.Transitions.ToString().ToLower()"
+             data-vertical="@engine.Vertical.ToString().ToLower()"
+             data-center="@engine.Center.ToString().ToLower()"
+             data-easing="@engine.Easing"
+             data-wrap="@engine.Wrap">
+
+            <!-- Carousel -->
+            <div class="jcarousel @jCarouselClass">
+                <ul>
+                    @foreach (var slide in slides)
+                    {
+                        <li>
+                            @Display(slide)
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            @if (engine.Controls)
+            {
+                <!-- Controls -->
+                <a class="jcarousel-prev" href="#">@T("‹")</a>
+                <a class="jcarousel-next" href="#">@T("›")</a>
+            }
+
+            @if (engine.Pagination)
+            {
+                <!-- Pagination -->
+                <div class="jcarousel-pagination">
+                    <!-- Pagination items will be generated in here. -->
+                </div>
+            }
+        </div>
+    }
+}

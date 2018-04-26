@@ -1,0 +1,60 @@
+﻿@using IDeliverable.Slides.SlideshowPlayerEngines.Cycle2
+@{
+    Script.Require("jQuery");
+    Script.Include("Engine.Cycle2.js", "Engine.Cycle2.min.js");
+    Style.Include("Engine.Cycle2.css", "Engine.Cycle2.min.css");
+}
+@{
+    var engine = (Cycle2)Model.Engine;
+    var slides = (IList<dynamic>)Model.Slides;
+
+    if (slides.Any())
+    {
+        <div class="cycle2-engine cycle-slideshow"
+             data-cycle-fx="@engine.Fx"
+             data-cycle-manual-fx="@engine.ManualFx"
+             data-cycle-easing="@engine.Easing"
+             data-cycle-speed="@engine.Speed"
+             data-cycle-manual-speed="@engine.ManualSpeed"
+             data-cycle-timeout="@engine.Timeout"
+             data-cycle-allow-wrap="@engine.AllowWrap.ToString().ToLowerInvariant()"
+             data-cycle-auto-height="@engine.AutoHeight"
+             data-cycle-loop="@engine.Loop.ToString().ToLowerInvariant()"
+             data-cycle-paused="@engine.Paused.ToString().ToLowerInvariant()"
+             data-cycle-pause-on-hover="@engine.PauseOnHover.ToString().ToLowerInvariant()"
+             data-cycle-random="@engine.Random.ToString().ToLowerInvariant()"
+             data-cycle-reverse="@engine.Reverse.ToString().ToLowerInvariant()"
+             data-cycle-swipe="@engine.Swipe.ToString().ToLowerInvariant()"
+             data-cycle-swipe-fx="@engine.SwipeFx"
+             data-cycle-carousel-fluid="@engine.CarouselFluid.ToString().ToLowerInvariant()"
+             data-cycle-carousel-visible="@engine.CarouselVisible"
+             data-cycle-carousel-vertical="@engine.CarouselVertical.ToString().ToLowerInvariant()"
+             data-cycle-carousel-throttle-speed="@engine.CarouselThrottleSpeed.ToString().ToLowerInvariant()"
+             data-cycle-shuffle-left="@engine.ShuffleLeft"
+             data-cycle-shuffle-right="@engine.ShuffleRight"
+             data-cycle-shuffle-top="@engine.ShuffleTop"
+             data-cycle-tile-count="@engine.TileCount"
+             data-cycle-tile-delay="@engine.TileDelay"
+             data-cycle-tile-vertical="@engine.TileVertical.ToString().ToLowerInvariant()"
+             data-cycle-slides="> .cycle-slide">
+
+            @foreach (var slide in slides)
+            {
+                <div class="cycle-slide">
+                    @Display(slide)
+                </div>
+            }
+
+            @if (engine.Pagination)
+            {
+                <div class="cycle-pager"></div>
+            }
+
+            @if (engine.Controls)
+            {
+                <div class="cycle-prev">@T("‹")</div>
+                <div class="cycle-next">@T("›")</div>
+            }
+        </div>
+    }
+}
