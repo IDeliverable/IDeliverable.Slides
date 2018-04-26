@@ -1,7 +1,7 @@
 ﻿Name: Slides
 AntiForgery: enabled
 Author: IDeliverable, Ltd.
-Website: https://github.com/IDeliverable/IDeliverable.Slides
+Website: http://www.ideliverable.com/products/premium-orchard-modules/ideliverable-slides
 Version: 1.1.0
 OrchardVersion: 1.10
 Status: Delivered
