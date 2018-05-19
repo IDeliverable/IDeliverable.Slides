@@ -49,7 +49,8 @@ namespace IDeliverable.Slides.SlideshowPlayerEngines.Bootstrap
 
         public override dynamic UpdateEditor(dynamic shapeFactory, IUpdateModel updater)
         {
-            updater?.TryUpdateModel(this, Prefix, null, null);
+            if (updater != null)
+                updater.TryUpdateModel(this, Prefix, null, null);
 
             return shapeFactory.EditorTemplate(TemplateName: "SlideshowPlayerEngines.Bootstrap", Prefix: Prefix, Model: this);
         }

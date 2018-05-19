@@ -8,10 +8,25 @@ namespace IDeliverable.Slides.Services
 {
     public abstract class SlidesProvider : Component, ISlidesProvider
     {
-        public virtual string Name => GetType().Name.Replace("Provider", "");
-        public virtual LocalizedString DisplayName => T(Name.CamelFriendly());
-        public virtual int Priority => 0;
-        public virtual string Prefix => GetType().Name;
+        public virtual string Name
+        {
+            get { return GetType().Name.Replace("Provider", ""); }
+        }
+
+        public virtual LocalizedString DisplayName
+        {
+            get { return T(Name.CamelFriendly()); }
+        }
+
+        public virtual int Priority
+        {
+            get { return 0; }
+        }
+
+        public virtual string Prefix
+        {
+            get { return GetType().Name; }
+        }
 
         public abstract dynamic BuildEditor(dynamic shapeFactory, SlidesProviderContext context);
 

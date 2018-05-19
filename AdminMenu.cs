@@ -6,7 +6,10 @@ namespace IDeliverable.Slides
 {
     public class AdminMenu : Component, INavigationProvider
     {
-        public string MenuName => "admin";
+        public string MenuName
+        {
+            get { return "admin"; }
+        }
 
         public void GetNavigation(NavigationBuilder builder)
         {

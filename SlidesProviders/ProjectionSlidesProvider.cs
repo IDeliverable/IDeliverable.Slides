@@ -27,7 +27,10 @@ namespace IDeliverable.Slides.SlidesProviders
             _contentManager = services.ContentManager;
         }
 
-        public override LocalizedString DisplayName => T("Projection");
+        public override LocalizedString DisplayName
+        {
+            get { return T("Projection"); }
+        }
 
         public override dynamic BuildEditor(dynamic shapeFactory, SlidesProviderContext context)
         {
@@ -90,7 +93,7 @@ namespace IDeliverable.Slides.SlidesProviders
             var queryIdentity = context.Element.Attr("Query");
             var query = context.GetItemFromSession(queryIdentity);
 
-            context.Storage.StoreQueryId(query?.Id);
+            context.Storage.StoreQueryId(query != null ? query.Id : default(int?));
             context.Storage.StoreProjectionSlidesDisplayType(displayType);
         }
 

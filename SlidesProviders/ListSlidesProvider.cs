@@ -24,7 +24,10 @@ namespace IDeliverable.Slides.SlidesProviders
             _containerService = containerService;
         }
 
-        public override LocalizedString DisplayName => T("List");
+        public override LocalizedString DisplayName
+        {
+            get { return T("List"); }
+        }
 
         public override dynamic BuildEditor(dynamic shapeFactory, SlidesProviderContext context)
         {
@@ -88,7 +91,7 @@ namespace IDeliverable.Slides.SlidesProviders
             var listIdentity = context.Element.Attr("List");
             var list = context.GetItemFromSession(listIdentity);
 
-            context.Storage.StoreListId(list?.Id);
+            context.Storage.StoreListId(list != null ? list.Id : default(int?));
             context.Storage.StoreListSlidesDisplayType(displayType);
         }
 

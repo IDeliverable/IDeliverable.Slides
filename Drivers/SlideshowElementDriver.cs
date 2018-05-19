@@ -38,7 +38,10 @@ namespace IDeliverable.Slides.Drivers
             _slideShowProfileService = slideShowProfileService;
         }
 
-        public string Prefix => "SlideshowElement";
+        public string Prefix
+        {
+            get { return "SlideshowElement"; }
+        }
 
         protected override EditorResult OnBuildEditor(Slideshow element, ElementEditorContext context)
         {
@@ -94,19 +97,22 @@ namespace IDeliverable.Slides.Drivers
 
         protected override void OnExporting(Slideshow element, ExportElementContext context)
         {
-            context.ExportableData["Profile"] = element.Profile?.Name;
+            context.ExportableData["Profile"] = element.Profile != null ? element.Profile.Name : null;
             context.ExportableData["Provider"] = element.ProviderName;
 
             var storage = new ElementStorage(element);
             var providersElement = _providerService.Export(storage, context.Layout);
-            
+
             context.ExportableData["Providers"] = providersElement.ToString(SaveOptions.DisableFormatting);
         }
 
         protected override void OnImporting(Slideshow element, ImportElementContext context)
         {
-            element.ProfileId = _slideShowProfileService.FindByName(context.ExportableData.Get("Profile"))?.Id;
-            element.ProviderName = _providerService.GetProvider(context.ExportableData.Get("Provider"))?.Name;
+            var profile = _slideShowProfileService.FindByName(context.ExportableData.Get("Profile"));
+            var provider = _providerService.GetProvider(context.ExportableData.Get("Provider"));
+
+            element.ProfileId = profile != null ? profile.Id : default(int?);
+            element.ProviderName = provider != null ? provider.Name : null;
 
             var providersData = context.ExportableData.Get("Providers");
 

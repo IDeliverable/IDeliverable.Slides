@@ -19,7 +19,10 @@ namespace IDeliverable.Slides.Models
         /// <summary>
         /// The player profile ID to use when presenting the slides.
         /// </summary>
-        public SlideshowProfile Profile => _profileField.Value;
+        public SlideshowProfile Profile
+        {
+            get { return _profileField.Value; }
+        }
 
         /// <summary>
         /// The name of the slides provider that provides the slides.

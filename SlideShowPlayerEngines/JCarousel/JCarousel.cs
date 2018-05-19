@@ -7,7 +7,10 @@ namespace IDeliverable.Slides.SlideshowPlayerEngines.JCarousel
 {
     public class JCarousel : SlideshowPlayerEngine
     {
-        public override LocalizedString DisplayName => T("JCarousel");
+        public override LocalizedString DisplayName
+        {
+            get { return T("JCarousel"); }
+        }
 
         public bool AutoStart
         {
@@ -70,7 +73,8 @@ namespace IDeliverable.Slides.SlideshowPlayerEngines.JCarousel
 
         public override dynamic UpdateEditor(dynamic shapeFactory, IUpdateModel updater)
         {
-            updater?.TryUpdateModel(this, Prefix, null, null);
+            if (updater != null)
+                updater.TryUpdateModel(this, Prefix, null, null);
 
             return shapeFactory.EditorTemplate(TemplateName: "SlideshowPlayerEngines.JCarousel", Prefix: Prefix, Model: this);
         }

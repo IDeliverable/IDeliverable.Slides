@@ -175,7 +175,9 @@ namespace IDeliverable.Slides.SlideshowPlayerEngines.Cycle2
 
         public override dynamic UpdateEditor(dynamic shapeFactory, IUpdateModel updater)
         {
-            updater?.TryUpdateModel(this, Prefix, null, null);
+            if (updater != null)
+                updater.TryUpdateModel(this, Prefix, null, null);
+
             return shapeFactory.EditorTemplate(TemplateName: "SlideshowPlayerEngines.Cycle2", Model: this, Prefix: Prefix);
         }
 

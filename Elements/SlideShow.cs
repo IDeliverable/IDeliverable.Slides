@@ -9,8 +9,15 @@ namespace IDeliverable.Slides.Elements
     {
         internal readonly LazyField<SlideshowProfile> _profileField = new LazyField<SlideshowProfile>();
 
-        public override string Category => "Media";
-        public override bool HasEditor => true;
+        public override string Category
+        {
+            get { return "Media"; }
+        }
+
+        public override bool HasEditor
+        {
+            get { return true; }
+        }
 
         public int? ProfileId
         {
@@ -18,7 +25,10 @@ namespace IDeliverable.Slides.Elements
             set { this.Store(x => x.ProfileId, value); }
         }
 
-        public SlideshowProfile Profile => _profileField.Value;
+        public SlideshowProfile Profile
+        {
+            get { return _profileField.Value; }
+        }
 
         public string ProviderName
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Xml.Linq;
 using IDeliverable.Slides.Models;
 using IDeliverable.Slides.Services;
 using IDeliverable.Slides.ViewModels;
@@ -98,22 +99,32 @@ namespace IDeliverable.Slides.Drivers
 
         protected override void Exporting(SlideshowPart part, ExportContentContext context)
         {
-            context.Element(part.PartDefinition.Name).SetAttributeValue("Profile", part.Profile?.Name);
+            context.Element(part.PartDefinition.Name).SetAttributeValue("Profile", part.Profile != null ? part.Profile.Name : null);
             context.Element(part.PartDefinition.Name).SetAttributeValue("Provider", part.ProviderName);
 
             var storage = new ContentPartStorage(part);
             var providersElement = _providerService.Export(storage, part);
-            
+
             context.Element(part.PartDefinition.Name).Add(providersElement);
         }
 
         protected override void Importing(SlideshowPart part, ImportContentContext context)
         {
-            context.ImportAttribute(part.PartDefinition.Name, "Profile", profileName => part.ProfileId = _slideShowProfileService.FindByName(profileName)?.Id);
-            context.ImportAttribute(part.PartDefinition.Name, "Provider", providerName => part.ProviderName = _providerService.GetProvider(providerName)?.Name);
+            context.ImportAttribute(part.PartDefinition.Name, "Profile", profileName =>
+            {
+                var profile = _slideShowProfileService.FindByName(profileName);
+                part.ProfileId = profile != null ? profile.Id : default(int?);
+            });
+
+            context.ImportAttribute(part.PartDefinition.Name, "Provider", providerName =>
+            {
+                var provider = _providerService.GetProvider(providerName);
+                part.ProviderName = provider != null ? provider.Name : null;
+            });
 
             var storage = new ContentPartStorage(part);
-            var providersElement = context.Data.Element(part.PartDefinition.Name)?.Element("Providers");
+            var partDefinitionElement = context.Data.Element(part.PartDefinition.Name);
+            var providersElement = partDefinitionElement != null ? partDefinitionElement.Element("Providers") : default(XElement);
 
             _providerService.Import(storage, providersElement, new ImportContentContextWrapper(context), part);
         }

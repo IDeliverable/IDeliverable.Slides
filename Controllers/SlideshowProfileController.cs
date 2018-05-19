@@ -23,7 +23,7 @@ namespace IDeliverable.Slides.Controllers
             _engineManager = engineManager;
         }
 
-        public Localizer T { get; set; } = NullLocalizer.Instance;
+        public Localizer T { get; set; }
 
         private readonly IOrchardServices _services;
         private readonly ISlideshowPlayerEngineManager _engineManager;
@@ -127,7 +127,7 @@ namespace IDeliverable.Slides.Controllers
                 profile.EngineStates[engine.Name] = engine.Data.Serialize();
             }
 
-            profile.Name = viewModel.Name?.Trim();
+            profile.Name = viewModel.Name != null ? viewModel.Name.Trim() : null;
             profile.SelectedEngine = viewModel.SelectedEngine;
             settingsPart.StoreProfile(profile);
             _services.Notifier.Information(T("That slide show profile has been updated."));

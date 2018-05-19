@@ -28,7 +28,10 @@ namespace IDeliverable.Slides.SlidesProviders
             _elementManager = elementManager;
         }
 
-        public override LocalizedString DisplayName => T("Default");
+        public override LocalizedString DisplayName
+        {
+            get { return T("Default"); }
+        }
 
         public override dynamic BuildEditor(dynamic shapeFactory, SlidesProviderContext context)
         {
